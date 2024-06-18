@@ -24,7 +24,7 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<CameraProxyClient>();
 
-            var imageData = await client.GetCameraImage("camera.garage");
+            var imageData = await client.GetCameraImage("camera.amadeo_pc_screenshot");
 
             Assert.IsNotNull(imageData);
             Assert.AreNotEqual(0, imageData.Length);
@@ -35,7 +35,7 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<CameraProxyClient>();
 
-            var imageData = await client.GetCameraImageAsBase64("camera.garage");
+            var imageData = await client.GetCameraImageAsBase64("camera.amadeo_pc_screenshot");
 
             Assert.IsNotNull(imageData);
             Assert.AreNotEqual(0, imageData.Length);

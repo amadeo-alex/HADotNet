@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using HADotNet.Core.Clients;
+using HADotNet.Core.Domain;
 using NUnit.Framework;
 
 namespace HADotNet.Core.Tests
@@ -24,10 +25,14 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<StatsClient>();
 
+#if TEST_ENV_HA_CORE
+            Assert.ThrowsAsync<SupervisorNotFoundException>(async () => await client.GetSupervisorStats());
+#else
             var stats = await client.GetSupervisorStats();
 
             Assert.AreEqual("ok", stats.Result);
             Assert.IsNotNull(stats.Data);
+#endif
         }
 
         [Test]
@@ -35,10 +40,14 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<StatsClient>();
 
+#if TEST_ENV_HA_CORE
+            Assert.ThrowsAsync<SupervisorNotFoundException>(async () => await client.GetCoreStats());
+#else
             var stats = await client.GetCoreStats();
 
             Assert.AreEqual("ok", stats.Result);
             Assert.IsNotNull(stats.Data);
+#endif
         }
     }
 }

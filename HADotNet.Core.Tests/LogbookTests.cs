@@ -38,7 +38,7 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<LogbookClient>();
 
-            var history = await client.GetLogbookEntries("light.jakes_office");
+            var history = await client.GetLogbookEntries("sun.sun");
 
             Assert.IsNotNull(history);
             Assert.IsNotEmpty(history.EntityId);
@@ -88,7 +88,7 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<LogbookClient>();
 
-            var history = await client.GetLogbookEntries("group.family_room_lights", DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)), DateTimeOffset.Now.Subtract(new TimeSpan(1, 12, 0, 0)));
+            var history = await client.GetLogbookEntries("sun.sun", DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)), DateTimeOffset.Now.Subtract(new TimeSpan(1, 12, 0, 0)));
 
             Assert.IsNotNull(history);
             Assert.IsNotEmpty(history.EntityId);

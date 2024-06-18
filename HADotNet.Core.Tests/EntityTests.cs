@@ -15,7 +15,8 @@ namespace HADotNet.Core.Tests
         [SetUp]
         public void Setup()
         {
-            Instance = new Uri(Environment.GetEnvironmentVariable("HADotNet:Tests:Instance"));
+            var instance = Environment.GetEnvironmentVariable("HADotNet:Tests:Instance");
+            Instance = new Uri(instance);
             ApiKey = Environment.GetEnvironmentVariable("HADotNet:Tests:ApiKey");
 
             ClientFactory.Initialize(Instance, ApiKey);

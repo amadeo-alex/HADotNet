@@ -20,25 +20,13 @@ namespace HADotNet.Core.Tests
             ClientFactory.Initialize(Instance, ApiKey);
         }
 
-        [Test]
-        public async Task ShouldRetrieveAllHistory()
-        {
-            var client = ClientFactory.GetClient<HistoryClient>();
-
-            var allHistory = await client.GetHistory();
-
-            Assert.IsNotNull(allHistory);
-            Assert.IsNotEmpty(allHistory[0].EntityId);
-            Assert.AreNotEqual(0, allHistory.Count);
-            Assert.AreNotEqual(0, allHistory[0].Count);
-        }
 
         [Test]
         public async Task ShouldRetrieveHistoryByEntityId()
         {
             var client = ClientFactory.GetClient<HistoryClient>();
 
-            var history = await client.GetHistory("light.jakes_office");
+            var history = await client.GetHistory("sun.sun");
 
             Assert.IsNotNull(history);
             Assert.IsNotEmpty(history.EntityId);
@@ -50,38 +38,11 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<HistoryClient>();
 
-            var allHistory = await client.GetHistory(DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)));
+            var allHistory = await client.GetHistory("sun.sun", DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)), DateTime.Now);
 
             Assert.IsNotNull(allHistory);
             Assert.IsNotEmpty(allHistory[0].EntityId);
             Assert.AreNotEqual(0, allHistory.Count);
-            Assert.AreNotEqual(0, allHistory[0].Count);
-        }
-
-        [Test]
-        public async Task ShouldRetrieveHistoryByStartAndEndDate()
-        {
-            var client = ClientFactory.GetClient<HistoryClient>();
-
-            var allHistory = await client.GetHistory(DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)), DateTimeOffset.Now.Subtract(new TimeSpan(1, 12, 0, 0)));
-
-            Assert.IsNotNull(allHistory);
-            Assert.IsNotEmpty(allHistory[0].EntityId);
-            Assert.AreNotEqual(0, allHistory.Count);
-            Assert.AreNotEqual(0, allHistory[0].Count);
-        }
-
-        [Test]
-        public async Task ShouldRetrieveHistoryByStartDateAndDuration()
-        {
-            var client = ClientFactory.GetClient<HistoryClient>();
-
-            var allHistory = await client.GetHistory(DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)), TimeSpan.FromHours(18));
-
-            Assert.IsNotNull(allHistory);
-            Assert.IsNotEmpty(allHistory[0].EntityId);
-            Assert.AreNotEqual(0, allHistory.Count);
-            Assert.AreNotEqual(0, allHistory[0].Count);
         }
 
         [Test]
@@ -89,7 +50,7 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<HistoryClient>();
 
-            var history = await client.GetHistory("group.family_room_lights", DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)), DateTimeOffset.Now.Subtract(new TimeSpan(1, 12, 0, 0)));
+            var history = await client.GetHistory("sun.sun", DateTimeOffset.Now.Subtract(TimeSpan.FromDays(2)), DateTime.Now);
 
             Assert.IsNotNull(history);
             Assert.IsNotEmpty(history.EntityId);

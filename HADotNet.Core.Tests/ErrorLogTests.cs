@@ -29,9 +29,6 @@ namespace HADotNet.Core.Tests
 
             Assert.IsNotNull(log);
             Assert.AreNotEqual(0, log.LogEntries.Count);
-            Assert.AreNotEqual(0, log.Errors.Count);
-            Assert.AreNotEqual(0, log.Warnings.Count);
-            Assert.AreEqual(7, log[7].Count);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace HADotNet.Core.Clients
             {
                 return await Get<ResponseObject<SupervisorInfoObject>>("/api/hassio/supervisor/info");
             }
-            catch (HttpResponseException hrex) when (hrex.StatusCode == 404)
+            catch (HttpRequestException hrex) when (hrex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 throw new SupervisorNotFoundException("This does not appear to be a Home Assistant Supervisor instance. See inner exception for more details.", hrex);
             }
@@ -42,7 +42,7 @@ namespace HADotNet.Core.Clients
             {
                 return await Get<ResponseObject<HostInfoObject>>("/api/hassio/host/info");
             }
-            catch (HttpResponseException hrex) when (hrex.StatusCode == 404)
+            catch (HttpRequestException hrex) when (hrex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 throw new SupervisorNotFoundException("This does not appear to be a Home Assistant Supervisor instance. See inner exception for more details.", hrex);
             }
@@ -58,7 +58,7 @@ namespace HADotNet.Core.Clients
             {
                 return await Get<ResponseObject<CoreInfoObject>>("/api/hassio/core/info");
             }
-            catch (HttpResponseException hrex) when (hrex.StatusCode == 404)
+            catch (HttpRequestException hrex) when (hrex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 throw new SupervisorNotFoundException("This does not appear to be a Home Assistant Supervisor instance. See inner exception for more details.", hrex);
             }

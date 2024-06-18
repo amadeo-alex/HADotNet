@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
+using HADotNet.Core.Domain;
 using HADotNet.Core.Models;
 
 namespace HADotNet.Core.Clients
@@ -20,12 +21,32 @@ namespace HADotNet.Core.Clients
         /// Retrieves Supervisor information.
         /// </summary>
         /// <returns>A <see cref="StatsObject"/> representing Supervisor stats.</returns>
-        public async Task<ResponseObject<StatsObject>> GetSupervisorStats() => await Get<ResponseObject<StatsObject>>("/api/hassio/supervisor/stats");
+        public async Task<ResponseObject<StatsObject>> GetSupervisorStats()
+        {
+            try
+            {
+                return await Get<ResponseObject<StatsObject>>("/api/hassio/supervisor/stats");
+            }
+            catch (HttpRequestException hrex) when (hrex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new SupervisorNotFoundException("This does not appear to be a Home Assistant Supervisor instance. See inner exception for more details.", hrex);
+            }
+        }
 
         /// <summary>
         /// Retrieves Core stats.
         /// </summary>
         /// <returns>A <see cref="StatsObject"/> representing Core stats.</returns>
-        public async Task<ResponseObject<StatsObject>> GetCoreStats() => await Get<ResponseObject<StatsObject>>("/api/hassio/core/stats");
+        public async Task<ResponseObject<StatsObject>> GetCoreStats()
+        {
+            try
+            {
+                return await Get<ResponseObject<StatsObject>>("/api/hassio/core/stats");
+            }
+            catch (HttpRequestException hrex) when (hrex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new SupervisorNotFoundException("This does not appear to be a Home Assistant Supervisor instance. See inner exception for more details.", hrex);
+            }
+        }
     }
 }

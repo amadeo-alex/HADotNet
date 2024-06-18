@@ -24,7 +24,7 @@ namespace HADotNet.Core.Tests
         {
             var client = ClientFactory.GetClient<CalendarClient>();
 
-            var events = await client.GetEvents("mycalendar");
+            var events = await client.GetEvents("mycalendar", 365 * 5);
 
             Assert.IsNotNull(events);
             Assert.AreNotEqual(0, events.Count);

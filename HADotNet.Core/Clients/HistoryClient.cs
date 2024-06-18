@@ -19,30 +19,6 @@ namespace HADotNet.Core.Clients
         public HistoryClient(HttpClient client) : base(client) { }
 
         /// <summary>
-        /// Retrieves a list of ALL historical states for all entities for the past 1 day. WARNING: On larger HA installs, this can return 300+ entities, over 4 MB of data, and take 20+ seconds.
-        /// </summary>
-        /// <returns>A <see cref="List{HistoryList}"/> representing a 24-hour history snapshot for all entities.</returns>
-        public async Task<List<HistoryList>> GetHistory() => await Get<List<HistoryList>>("/api/history/period");
-
-        /// <summary>
-        /// Retrieves a list of ALL historical states for all entities for the specified day (<paramref name="startDate" /> + 24 hours). WARNING: On larger HA installs, this can return 300+ entities, over 4 MB of data, and take 20+ seconds.
-        /// </summary>
-        /// <returns>A <see cref="List{HistoryList}"/> representing a 24-hour history snapshot starting from <paramref name="startDate" /> for all entities.</returns>
-        public async Task<List<HistoryList>> GetHistory(DateTimeOffset startDate) => await Get<List<HistoryList>>($"/api/history/period/{startDate.UtcDateTime:yyyy-MM-dd\\THH:mm:ss\\+00\\:00}");
-
-        /// <summary>
-        /// Retrieves a list of ALL historical states for all entities for the specified time range, from <paramref name="startDate" /> to <paramref name="endDate" />. WARNING: On larger HA installs, for multiple days, this can return A LOT of data and potentially take a LONG time to return. Use with caution!
-        /// </summary>
-        /// <returns>A <see cref="List{HistoryList}"/> representing a 24-hour history snapshot, from <paramref name="startDate" /> to <paramref name="endDate" />, for all entities.</returns>
-        public async Task<List<HistoryList>> GetHistory(DateTimeOffset startDate, DateTimeOffset endDate) => await Get<List<HistoryList>>($"/api/history/period/{startDate.UtcDateTime:yyyy-MM-dd\\THH:mm:ss\\+00\\:00}?end_time={Uri.EscapeDataString(endDate.UtcDateTime.ToString("yyyy-MM-dd\\THH:mm:ss\\+00\\:00"))}");
-
-        /// <summary>
-        /// Retrieves a list of ALL historical states for all entities for the specified time range, from <paramref name="startDate" />, for the specified <paramref name="duration" />. WARNING: On larger HA installs, for multiple days, this can return A LOT of data and potentially take a LONG time to return. Use with caution!
-        /// </summary>
-        /// <returns>A <see cref="List{HistoryList}"/> representing a 24-hour history snapshot, from <paramref name="startDate" />, for the specified <paramref name="duration" />, for all entities.</returns>
-        public async Task<List<HistoryList>> GetHistory(DateTimeOffset startDate, TimeSpan duration) => await GetHistory(startDate, startDate.Add(duration));
-
-        /// <summary>
         /// Retrieves a list of historical states for the specified <paramref name="entityId" /> for the specified time range, from <paramref name="startDate" /> to <paramref name="endDate" />.
         /// </summary>
         /// <param name="entityId">The entity ID to filter on.</param>
