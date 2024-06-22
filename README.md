@@ -1,6 +1,6 @@
 ﻿# HADotNet
 
-[![Nuget](https://img.shields.io/nuget/v/HADotNet.Core?logo=nuget)](https://www.nuget.org/packages/HADotNet.Core/)
+[![Nuget](https://img.shields.io/nuget/v/Amadeo.HADotNet.Core?logo=nuget)](https://www.nuget.org/packages/Amadeo.HADotNet.Core/)
 
 A simple, straightforward .NET Standard library for the [Home Assistant](https://github.com/home-assistant/home-assistant) API.
 
