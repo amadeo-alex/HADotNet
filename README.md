@@ -4,6 +4,12 @@
 
 A simple, straightforward .NET Standard library for the [Home Assistant](https://github.com/home-assistant/home-assistant) API.
 
+## Fork
+
+This repository is the fork of original one by [qJake](https://github.com/qJake/HADotNet).
+
+Aim of the fork is to provide maintenance & feature updates as part of [HASS.Agent](https://github.com/hass-agent) development.
+
 ## Features
 
 * .NET 8 cross-platform library
