@@ -1,15 +1,12 @@
 ﻿# HADotNet
 
 [![Nuget](https://img.shields.io/nuget/v/HADotNet.Core?logo=nuget)](https://www.nuget.org/packages/HADotNet.Core/)
-![ci-badge](https://github.com/qJake/HADotNet/workflows/CI%20Build/badge.svg)
 
-[![Buy me a coffee](https://raw.githubusercontent.com/qJake/HADotNet.CommandCenter/master/Assets/bmac.png)](https://www.buymeacoffee.com/qJake)
-
-A simple, straighforward .NET Standard library for the [Home Assistant](https://github.com/home-assistant/home-assistant) API.
+A simple, straightforward .NET Standard library for the [Home Assistant](https://github.com/home-assistant/home-assistant) API.
 
 ## Features
 
-* .NET Standard 2.0 cross-platform library
+* .NET 8 cross-platform library
 * DI-friendly client initialization (suitable for ASP.NET Core)
 * Home Assistant data is represented by strongly-typed, commented model classes
 
@@ -37,13 +34,13 @@ A simple, straighforward .NET Standard library for the [Home Assistant](https://
 
 [![Nuget](https://img.shields.io/nuget/dt/HADotNet.Core?color=%23004880&label=NuGet%20Downloads&logo=nuget)](https://www.nuget.org/packages/HADotNet.Core/)
 
-Install **[HADotNet.Core](https://www.nuget.org/packages/HADotNet.Core/)** from NuGet:
+Install **[Amadeo.HADotNet.Core](https://www.nuget.org/packages/Amadeo.HADotNet.Core/)** from NuGet:
 
-`Install-Package HADotNet.Core`
+`Install-Package Amadeo.HADotNet.Core`
 
 ### From Source
 
-Clone this repo and either include the `HADotNet.Core` library in your project, 
+Clone this repo and either include the `Amadeo.HADotNet.Core` library in your project, 
 or build the project and include the DLL as a reference.
 
 ## Examples
@@ -223,10 +220,3 @@ To run the unit tests, you must first set two environment variables:
 
 * `HADotNet:Tests:Instance` = `https://my-home-assistant-url/`
 * `HADotNet:Tests:ApiKey` = `AbCdEf0123456789...`
-
-## Collaborating
-
-Fork the project, make some changes, and submit a pull request!
-
-Be sure to follow the same coding style (generally, the standard Microsoft C# coding 
-guidelines) and comment all publicly-visible types and members with XMLDoc comments.
