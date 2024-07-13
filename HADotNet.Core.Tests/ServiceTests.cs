@@ -68,5 +68,15 @@ namespace HADotNet.Core.Tests
             // Uncomment if you are actually running a test against a real entity that will return state data
             //Assert.AreNotEqual(0, returnState.Count);
         }
+
+        [Test]
+        public async Task ShouldCallServiceToTriggerAutomation()
+        {
+            var client = ClientFactory.GetClient<ServiceClient>();
+
+            var returnState = await client.CallServiceForEntities("automation.trigger", "automation.test_automation");
+
+            Assert.IsNotNull(returnState);
+        }
     }
 }
