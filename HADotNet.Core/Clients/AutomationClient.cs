@@ -41,6 +41,6 @@ namespace HADotNet.Core.Clients
         /// </summary>
         /// <param name="id">The automation id.</param>
         /// <returns>The <see cref="AutomationResultObject"/>.</returns>
-        public new async Task<AutomationResultObject> Delete(string id) => await Delete<AutomationResultObject>($"/api/config/automation/config/{id}");
+        public async new Task<AutomationResultObject> Delete(string id) => await Delete<AutomationResultObject>($"/api/config/automation/config/{id}");
     }
 }
