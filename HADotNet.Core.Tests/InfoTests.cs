@@ -1,8 +1,11 @@
-﻿using System;
+﻿#define TEST_ENV_HA_CORE
+
+using System;
 using System.Threading.Tasks;
 using HADotNet.Core.Clients;
 using HADotNet.Core.Domain;
 using NUnit.Framework;
+
 
 namespace HADotNet.Core.Tests
 {
